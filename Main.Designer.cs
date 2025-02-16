@@ -67,12 +67,12 @@
             btnEsquerda = new ToolStripButton();
             btnCentro = new ToolStripButton();
             btnDireita = new ToolStripButton();
+            btnJustificar = new ToolStripButton();
             fontDialog1 = new FontDialog();
             openFileDialog1 = new OpenFileDialog();
             saveFileDialog1 = new SaveFileDialog();
             printDocument1 = new System.Drawing.Printing.PrintDocument();
             printDialog1 = new PrintDialog();
-            btnJustificar = new ToolStripButton();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             SuspendLayout();
@@ -121,6 +121,7 @@
             abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
             abrirToolStripMenuItem.Size = new Size(120, 22);
             abrirToolStripMenuItem.Text = "Abrir";
+            abrirToolStripMenuItem.Click += abrirToolStripMenuItem_Click;
             // 
             // salvarToolStripMenuItem
             // 
@@ -201,25 +202,25 @@
             // centralizarToolStripMenuItem
             // 
             centralizarToolStripMenuItem.Name = "centralizarToolStripMenuItem";
-            centralizarToolStripMenuItem.Size = new Size(180, 22);
+            centralizarToolStripMenuItem.Size = new Size(130, 22);
             centralizarToolStripMenuItem.Text = "Centralizar";
             // 
             // esquerdaToolStripMenuItem
             // 
             esquerdaToolStripMenuItem.Name = "esquerdaToolStripMenuItem";
-            esquerdaToolStripMenuItem.Size = new Size(180, 22);
+            esquerdaToolStripMenuItem.Size = new Size(130, 22);
             esquerdaToolStripMenuItem.Text = "Esquerda";
             // 
             // direitaToolStripMenuItem
             // 
             direitaToolStripMenuItem.Name = "direitaToolStripMenuItem";
-            direitaToolStripMenuItem.Size = new Size(180, 22);
+            direitaToolStripMenuItem.Size = new Size(130, 22);
             direitaToolStripMenuItem.Text = "Direita";
             // 
             // justificarToolStripMenuItem
             // 
             justificarToolStripMenuItem.Name = "justificarToolStripMenuItem";
-            justificarToolStripMenuItem.Size = new Size(180, 22);
+            justificarToolStripMenuItem.Size = new Size(130, 22);
             justificarToolStripMenuItem.Text = "Justificar";
             // 
             // toolStrip1
@@ -366,18 +367,6 @@
             btnDireita.Size = new Size(23, 22);
             btnDireita.Text = "Direita";
             // 
-            // openFileDialog1
-            // 
-            openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // saveFileDialog1
-            // 
-            saveFileDialog1.DefaultExt = "txt";
-            // 
-            // printDialog1
-            // 
-            printDialog1.UseEXDialog = true;
-            // 
             // btnJustificar
             // 
             btnJustificar.DisplayStyle = ToolStripItemDisplayStyle.Image;
@@ -386,6 +375,19 @@
             btnJustificar.Name = "btnJustificar";
             btnJustificar.Size = new Size(23, 22);
             btnJustificar.Text = "Justificar";
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.Title = "Abrir Arquivo";
+            // 
+            // saveFileDialog1
+            // 
+            saveFileDialog1.DefaultExt = "txt";
+            saveFileDialog1.Filter = "Arquivos de Texto (*.txt)|*.txt";
+            // 
+            // printDialog1
+            // 
+            printDialog1.UseEXDialog = true;
             // 
             // Main
             // 
