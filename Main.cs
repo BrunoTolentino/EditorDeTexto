@@ -26,7 +26,7 @@ namespace EditorDeTexto
 
         #region "Variáveis"
 
-        StreamReader leitura = null;
+        //StreamReader leitura = null;
 
         #endregion
 
@@ -65,21 +65,77 @@ namespace EditorDeTexto
             Abrir();
         }
 
+        //Copiar
+        private void btnCopiar_Click(object sender, EventArgs e)
+        {
+            Copiar();
+        }
+
+        private void copiarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Copiar();
+        }
+
+        //Colar
+        private void btnColar_Click(object sender, EventArgs e)
+        {
+            Colar();
+        }
+
+        private void colarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Colar();
+        }
+
+        //Negrito
+        private void btnNegrito_Click(object sender, EventArgs e)
+        {
+            AplicarFormatacaoEstilo(richTextBox1,FontStyle.Bold);
+        }
+
+        private void negritoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AplicarFormatacaoEstilo(richTextBox1, FontStyle.Bold);
+        }
+
+        //Itálico
+        private void btnItalico_Click(object sender, EventArgs e)
+        {
+            AplicarFormatacaoEstilo(richTextBox1, FontStyle.Italic);
+        }
+
+        private void itálicoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AplicarFormatacaoEstilo(richTextBox1, FontStyle.Italic);
+        }
+
+        //Sublinhado
+        private void btnSublinhado_Click(object sender, EventArgs e)
+        {
+            AplicarFormatacaoEstilo(richTextBox1, FontStyle.Underline);
+        }
+
+        private void sublinhadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AplicarFormatacaoEstilo(richTextBox1, FontStyle.Underline);
+        }
+
         #endregion
 
         #region "Métodos"
 
         private void Novo()
         {
-            if(! string.IsNullOrEmpty(richTextBox1.Text)){
-                
-                if(MessageBox.Show("Deseja salvar o arquivo atual?",
+            if (!string.IsNullOrEmpty(richTextBox1.Text))
+            {
+
+                if (MessageBox.Show("Deseja salvar o arquivo atual?",
                                    "Arquivo não salvo.",
-                                   MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+                                   MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Salvar();
                 }
-                
+
             }
 
             richTextBox1.Clear();
@@ -94,7 +150,7 @@ namespace EditorDeTexto
                 {
 
                     string filepath = this.saveFileDialog1.FileName;
-                    if(Path.GetExtension(filepath) == "")
+                    if (Path.GetExtension(filepath) == "")
                     {
                         filepath += ".TXT";
                     }
@@ -146,15 +202,32 @@ namespace EditorDeTexto
 
         }
 
-        #endregion
-
-
-
-        private void Main_Load(object sender, EventArgs e)
+        private void Copiar()
         {
-
+            if (richTextBox1.SelectionLength > 0)
+            {
+                richTextBox1.Copy();
+            }
         }
 
-        
+        private void Colar()
+        {
+            richTextBox1.Paste();
+        }       
+
+        private void AplicarFormatacaoEstilo(RichTextBox rtb,FontStyle fstyle)
+        {
+            if(rtb.SelectionFont != null)
+            {
+                Font fonteSelecao = rtb.SelectionFont;
+
+                fstyle = fonteSelecao.Style ^ fstyle;
+                rtb.SelectionFont = new Font(fonteSelecao.FontFamily,fonteSelecao.Size, fstyle);
+            }
+           
+        }
+
+        #endregion
+       
     }
 }

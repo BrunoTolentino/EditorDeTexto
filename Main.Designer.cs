@@ -148,12 +148,14 @@
             copiarToolStripMenuItem.Name = "copiarToolStripMenuItem";
             copiarToolStripMenuItem.Size = new Size(118, 22);
             copiarToolStripMenuItem.Text = "Copiar";
+            copiarToolStripMenuItem.Click += copiarToolStripMenuItem_Click;
             // 
             // colarToolStripMenuItem
             // 
             colarToolStripMenuItem.Name = "colarToolStripMenuItem";
             colarToolStripMenuItem.Size = new Size(118, 22);
             colarToolStripMenuItem.Text = "Colar";
+            colarToolStripMenuItem.Click += colarToolStripMenuItem_Click;
             // 
             // desfazerToolStripMenuItem
             // 
@@ -177,26 +179,29 @@
             // negritoToolStripMenuItem
             // 
             negritoToolStripMenuItem.Name = "negritoToolStripMenuItem";
-            negritoToolStripMenuItem.Size = new Size(143, 22);
+            negritoToolStripMenuItem.Size = new Size(180, 22);
             negritoToolStripMenuItem.Text = "Negrito";
+            negritoToolStripMenuItem.Click += negritoToolStripMenuItem_Click;
             // 
             // itálicoToolStripMenuItem
             // 
             itálicoToolStripMenuItem.Name = "itálicoToolStripMenuItem";
-            itálicoToolStripMenuItem.Size = new Size(143, 22);
+            itálicoToolStripMenuItem.Size = new Size(180, 22);
             itálicoToolStripMenuItem.Text = "Itálico";
+            itálicoToolStripMenuItem.Click += itálicoToolStripMenuItem_Click;
             // 
             // sublinhadoToolStripMenuItem
             // 
             sublinhadoToolStripMenuItem.Name = "sublinhadoToolStripMenuItem";
-            sublinhadoToolStripMenuItem.Size = new Size(143, 22);
+            sublinhadoToolStripMenuItem.Size = new Size(180, 22);
             sublinhadoToolStripMenuItem.Text = "Sublinhado";
+            sublinhadoToolStripMenuItem.Click += sublinhadoToolStripMenuItem_Click;
             // 
             // alinhamentoToolStripMenuItem
             // 
             alinhamentoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { centralizarToolStripMenuItem, esquerdaToolStripMenuItem, direitaToolStripMenuItem, justificarToolStripMenuItem });
             alinhamentoToolStripMenuItem.Name = "alinhamentoToolStripMenuItem";
-            alinhamentoToolStripMenuItem.Size = new Size(143, 22);
+            alinhamentoToolStripMenuItem.Size = new Size(180, 22);
             alinhamentoToolStripMenuItem.Text = "Alinhamento";
             // 
             // centralizarToolStripMenuItem
@@ -284,6 +289,7 @@
             btnCopiar.Name = "btnCopiar";
             btnCopiar.Size = new Size(23, 22);
             btnCopiar.Text = "Copiar";
+            btnCopiar.Click += btnCopiar_Click;
             // 
             // btnColar
             // 
@@ -293,6 +299,7 @@
             btnColar.Name = "btnColar";
             btnColar.Size = new Size(23, 22);
             btnColar.Text = "Colar";
+            btnColar.Click += btnColar_Click;
             // 
             // toolStripSeparator2
             // 
@@ -307,6 +314,7 @@
             btnNegrito.Name = "btnNegrito";
             btnNegrito.Size = new Size(23, 22);
             btnNegrito.Text = "Negrito";
+            btnNegrito.Click += btnNegrito_Click;
             // 
             // btnItalico
             // 
@@ -316,6 +324,7 @@
             btnItalico.Name = "btnItalico";
             btnItalico.Size = new Size(23, 22);
             btnItalico.Text = "Itálico";
+            btnItalico.Click += btnItalico_Click;
             // 
             // btnSublinhado
             // 
@@ -325,6 +334,7 @@
             btnSublinhado.Name = "btnSublinhado";
             btnSublinhado.Size = new Size(23, 22);
             btnSublinhado.Text = "Sublinhado";
+            btnSublinhado.Click += btnSublinhado_Click;
             // 
             // btnFonte
             // 
@@ -402,7 +412,6 @@
             Padding = new Padding(5);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Mundo";
-            Load += Main_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             toolStrip1.ResumeLayout(false);
