@@ -26,11 +26,68 @@ namespace EditorDeTexto
 
         #region "Variáveis"
 
-        //StreamReader leitura = null;
+        StringReader leitura = null;
 
         #endregion
 
         #region "Eventos Principais"
+
+        //Impressão
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            Imprimrir();
+        }
+
+        private void imprimirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Imprimrir();
+        }
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            float linhasPagina = 0;
+            float posY = 0;
+            int cont = 0;
+            float margemEsquerda = e.MarginBounds.Left - 50;
+            float margemSuperior = e.MarginBounds.Top - 50;
+
+            if (margemEsquerda < 5)
+            {
+                margemEsquerda = 20;
+            }
+
+            if (margemSuperior < 5)
+            {
+                margemSuperior = 20;
+            }
+
+            string linha = null;
+            Font fonte = this.richTextBox1.Font;
+            SolidBrush pincel = new SolidBrush(Color.Black);
+            linhasPagina = e.MarginBounds.Height / fonte.GetHeight(e.Graphics);
+
+            linha = leitura.ReadLine();
+
+            while (cont < linhasPagina && linha != null)
+            {
+                posY = (margemSuperior + (cont * fonte.GetHeight(e.Graphics)));
+                e.Graphics.DrawString(linha, fonte, pincel, margemEsquerda, posY, new StringFormat());
+                cont++;
+                linha = leitura.ReadLine();
+            }
+
+            if (linha != null)
+            {
+                e.HasMorePages = true;
+            }
+            else
+            {
+                e.HasMorePages = false;
+            }
+
+            pincel.Dispose();
+
+        }
 
         //Novo
         private void novoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -90,7 +147,7 @@ namespace EditorDeTexto
         //Negrito
         private void btnNegrito_Click(object sender, EventArgs e)
         {
-            AplicarFormatacaoEstilo(richTextBox1,FontStyle.Bold);
+            AplicarFormatacaoEstilo(richTextBox1, FontStyle.Bold);
         }
 
         private void negritoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -118,6 +175,46 @@ namespace EditorDeTexto
         private void sublinhadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AplicarFormatacaoEstilo(richTextBox1, FontStyle.Underline);
+        }
+
+        //Alinhamento à esquerda
+        private void btnEsquerda_Click(object sender, EventArgs e)
+        {
+            Alinhamento(richTextBox1, HorizontalAlignment.Left);
+        }
+
+        private void esquerdaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Alinhamento(richTextBox1, HorizontalAlignment.Left);
+        }
+
+        //Alinhamento ao centro
+        private void btnCentro_Click(object sender, EventArgs e)
+        {
+            Alinhamento(richTextBox1, HorizontalAlignment.Center);
+        }
+
+        private void centralizarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Alinhamento(richTextBox1, HorizontalAlignment.Center);
+
+        }
+
+        //Alinhamento à direita
+        private void btnDireita_Click(object sender, EventArgs e)
+        {
+            Alinhamento(richTextBox1, HorizontalAlignment.Right);
+        }
+
+        private void direitaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Alinhamento(richTextBox1, HorizontalAlignment.Right);
+        }
+
+        //Sair 
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         #endregion
@@ -213,18 +310,37 @@ namespace EditorDeTexto
         private void Colar()
         {
             richTextBox1.Paste();
-        }       
+        }
 
-        private void AplicarFormatacaoEstilo(RichTextBox rtb,FontStyle fstyle)
+        private void AplicarFormatacaoEstilo(RichTextBox rtb, FontStyle fstyle)
         {
-            if(rtb.SelectionFont != null)
+            if (rtb.SelectionFont != null)
             {
                 Font fonteSelecao = rtb.SelectionFont;
 
                 fstyle = fonteSelecao.Style ^ fstyle;
-                rtb.SelectionFont = new Font(fonteSelecao.FontFamily,fonteSelecao.Size, fstyle);
+                rtb.SelectionFont = new Font(fonteSelecao.FontFamily, fonteSelecao.Size, fstyle);
             }
-           
+
+        }
+
+        private void Alinhamento(RichTextBox rtb, HorizontalAlignment alinhamento)
+        {
+            rtb.SelectionAlignment = alinhamento;
+        }
+
+        private void Imprimrir()
+        {
+            printDialog1.Document = printDocument1;
+
+            leitura = new StringReader(richTextBox1.Text);
+
+            if (printDialog1.ShowDialog() == DialogResult.OK)
+            {
+
+                this.printDocument1.Print();
+
+            }
         }
 
         #endregion
