@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics.Eventing.Reader;
 
 namespace EditorDeTexto
 {
@@ -33,7 +34,6 @@ namespace EditorDeTexto
         #region "Eventos Principais"
 
         //Impressão
-
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             Imprimrir();
@@ -144,6 +144,12 @@ namespace EditorDeTexto
             Colar();
         }
 
+        //Fonte
+        private void btnFonte_Click(object sender, EventArgs e)
+        {
+            AlterarFonte();
+        }
+
         //Negrito
         private void btnNegrito_Click(object sender, EventArgs e)
         {
@@ -215,6 +221,66 @@ namespace EditorDeTexto
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        #endregion
+
+        #region "Eventos Secundários"
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if(keyData == (Keys.Control | Keys.S))
+            {
+                Salvar();
+                return true;
+            } else if (keyData == (Keys.Control | Keys.I))
+            {
+                Imprimrir();
+                return true;
+            } else if (keyData == (Keys.Control | Keys.N))
+            {
+                Novo();
+                return true;
+            } else if (keyData == (Keys.Control | Keys.A))
+            {
+                Abrir();
+                return true;
+            } else if (keyData == (Keys.Control | Keys.C))
+            {
+                Copiar();
+                return true;
+            } else if(keyData == (Keys.Control | Keys.V))
+            {
+                Colar();
+                return true;
+            } else if(keyData == (Keys.Control | Keys.B))
+            {
+                AplicarFormatacaoEstilo(richTextBox1, FontStyle.Bold);
+                return true;
+            } else if(keyData == (Keys.Control | Keys.T))
+            {
+                AplicarFormatacaoEstilo(richTextBox1, FontStyle.Italic);
+                return true;
+            } else if(keyData == (Keys.Control | Keys.U))
+            {
+                AplicarFormatacaoEstilo(richTextBox1, FontStyle.Underline);
+                return true;
+            } else if(keyData == (Keys.Control | Keys.F)){
+                AlterarFonte();
+                return true;
+            } else if(keyData == (Keys.Control | Keys.E)){
+                Alinhamento(richTextBox1, HorizontalAlignment.Left);
+                return true;
+            } else if (keyData == (Keys.Control | Keys.D)) {
+                Alinhamento(richTextBox1, HorizontalAlignment.Right);
+                return true;
+            } else if (keyData == (Keys.Control | Keys.M)) {
+                Alinhamento(richTextBox1, HorizontalAlignment.Center);
+                return true;
+            }
+
+                return base.ProcessCmdKey(ref msg, keyData);
+
         }
 
         #endregion
@@ -324,6 +390,16 @@ namespace EditorDeTexto
 
         }
 
+        private void AlterarFonte()
+        {
+           if(fontDialog1.ShowDialog() == DialogResult.OK)
+            {
+                FontStyle fStyle = fontDialog1.Font.Style;
+                float fontSize = fontDialog1.Font.Size;
+                richTextBox1.SelectionFont = new Font(fontDialog1.Font.FontFamily, fontSize, fStyle);
+            }
+        }
+
         private void Alinhamento(RichTextBox rtb, HorizontalAlignment alinhamento)
         {
             rtb.SelectionAlignment = alinhamento;
@@ -344,6 +420,6 @@ namespace EditorDeTexto
         }
 
         #endregion
-       
+        
     }
 }

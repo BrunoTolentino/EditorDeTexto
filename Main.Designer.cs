@@ -104,35 +104,35 @@
             // imprimirToolStripMenuItem
             // 
             imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
-            imprimirToolStripMenuItem.Size = new Size(180, 22);
+            imprimirToolStripMenuItem.Size = new Size(120, 22);
             imprimirToolStripMenuItem.Text = "Imprimir";
             imprimirToolStripMenuItem.Click += imprimirToolStripMenuItem_Click;
             // 
             // novoToolStripMenuItem
             // 
             novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            novoToolStripMenuItem.Size = new Size(180, 22);
+            novoToolStripMenuItem.Size = new Size(120, 22);
             novoToolStripMenuItem.Text = "Novo";
             novoToolStripMenuItem.Click += novoToolStripMenuItem_Click;
             // 
             // abrirToolStripMenuItem
             // 
             abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            abrirToolStripMenuItem.Size = new Size(180, 22);
+            abrirToolStripMenuItem.Size = new Size(120, 22);
             abrirToolStripMenuItem.Text = "Abrir";
             abrirToolStripMenuItem.Click += abrirToolStripMenuItem_Click;
             // 
             // salvarToolStripMenuItem
             // 
             salvarToolStripMenuItem.Name = "salvarToolStripMenuItem";
-            salvarToolStripMenuItem.Size = new Size(180, 22);
+            salvarToolStripMenuItem.Size = new Size(120, 22);
             salvarToolStripMenuItem.Text = "Salvar";
             salvarToolStripMenuItem.Click += salvarToolStripMenuItem_Click;
             // 
             // sairToolStripMenuItem
             // 
             sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            sairToolStripMenuItem.Size = new Size(180, 22);
+            sairToolStripMenuItem.Size = new Size(120, 22);
             sairToolStripMenuItem.Text = "Sair";
             sairToolStripMenuItem.Click += sairToolStripMenuItem_Click;
             // 
@@ -242,6 +242,7 @@
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(23, 22);
             btnSalvar.Text = "Salvar";
+            btnSalvar.ToolTipText = "Salvar(Control + S)";
             btnSalvar.Click += btnSalvar_Click;
             // 
             // btnImprimir
@@ -252,6 +253,7 @@
             btnImprimir.Name = "btnImprimir";
             btnImprimir.Size = new Size(23, 22);
             btnImprimir.Text = "Imprimir";
+            btnImprimir.ToolTipText = "Imprimir(Control + I)";
             btnImprimir.Click += btnImprimir_Click;
             // 
             // btnNovo
@@ -262,6 +264,7 @@
             btnNovo.Name = "btnNovo";
             btnNovo.Size = new Size(23, 22);
             btnNovo.Text = "Novo";
+            btnNovo.ToolTipText = "Novo(Control + N)";
             btnNovo.Click += btnNovo_Click;
             // 
             // btnAbrir
@@ -272,6 +275,7 @@
             btnAbrir.Name = "btnAbrir";
             btnAbrir.Size = new Size(23, 22);
             btnAbrir.Text = "Abrir";
+            btnAbrir.ToolTipText = "Abrir(Control + A)";
             btnAbrir.Click += btnAbrir_Click;
             // 
             // toolStripSeparator1
@@ -287,6 +291,7 @@
             btnCopiar.Name = "btnCopiar";
             btnCopiar.Size = new Size(23, 22);
             btnCopiar.Text = "Copiar";
+            btnCopiar.ToolTipText = "Copiar(Control + C)";
             btnCopiar.Click += btnCopiar_Click;
             // 
             // btnColar
@@ -297,6 +302,7 @@
             btnColar.Name = "btnColar";
             btnColar.Size = new Size(23, 22);
             btnColar.Text = "Colar";
+            btnColar.ToolTipText = "Colar(Control + V)";
             btnColar.Click += btnColar_Click;
             // 
             // toolStripSeparator2
@@ -312,6 +318,7 @@
             btnNegrito.Name = "btnNegrito";
             btnNegrito.Size = new Size(23, 22);
             btnNegrito.Text = "Negrito";
+            btnNegrito.ToolTipText = "Negrito(Control + B)";
             btnNegrito.Click += btnNegrito_Click;
             // 
             // btnItalico
@@ -322,6 +329,7 @@
             btnItalico.Name = "btnItalico";
             btnItalico.Size = new Size(23, 22);
             btnItalico.Text = "Itálico";
+            btnItalico.ToolTipText = "Itálico(Control + I)";
             btnItalico.Click += btnItalico_Click;
             // 
             // btnSublinhado
@@ -332,6 +340,7 @@
             btnSublinhado.Name = "btnSublinhado";
             btnSublinhado.Size = new Size(23, 22);
             btnSublinhado.Text = "Sublinhado";
+            btnSublinhado.ToolTipText = "Sublinhado(Control + U)";
             btnSublinhado.Click += btnSublinhado_Click;
             // 
             // btnFonte
@@ -342,6 +351,8 @@
             btnFonte.Name = "btnFonte";
             btnFonte.Size = new Size(23, 22);
             btnFonte.Text = "Fonte";
+            btnFonte.ToolTipText = "Fonte(Control + F)";
+            btnFonte.Click += btnFonte_Click;
             // 
             // toolStripSeparator3
             // 
@@ -356,6 +367,7 @@
             btnEsquerda.Name = "btnEsquerda";
             btnEsquerda.Size = new Size(23, 22);
             btnEsquerda.Text = "Esquerda";
+            btnEsquerda.ToolTipText = "Esquerda(Control + E)";
             btnEsquerda.Click += btnEsquerda_Click;
             // 
             // btnCentro
@@ -366,6 +378,7 @@
             btnCentro.Name = "btnCentro";
             btnCentro.Size = new Size(23, 22);
             btnCentro.Text = "Centro";
+            btnCentro.ToolTipText = "Centro(Control + M)";
             btnCentro.Click += btnCentro_Click;
             // 
             // btnDireita
@@ -376,6 +389,7 @@
             btnDireita.Name = "btnDireita";
             btnDireita.Size = new Size(23, 22);
             btnDireita.Text = "Direita";
+            btnDireita.ToolTipText = "Direita(Control + D)";
             btnDireita.Click += btnDireita_Click;
             // 
             // openFileDialog1
